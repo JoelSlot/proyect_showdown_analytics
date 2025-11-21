@@ -1,0 +1,141 @@
+sources:
+  - name: showdown_data
+    database: proyect_showdown_dev_bronze
+    tables:
+      - name: match_data
+        description: "Contains information about the matches played out in showdown. Each row represents a single turn in a match from the perspective of one player." 
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+                combination_of_columns:
+                  - battle_id
+                  - pov
+                  - turn_number
+ 
+        columns:
+          - name: battle_id
+            data_type: varchar
+            description: "Unique id of the played out  match."
+          - name: format
+            data_type: varchar
+            description: "The competitive format the match was played in."
+          - name: elo
+            data_type: varchar
+            description: "The competitive score of the match. It's value can be 'Unrated'"
+          - name: pov
+            data_type: varchar
+            description: "The name of the player who's point of view it is."
+          - name: opponent
+            data_type: varchar
+            description: "The name of the opposing player."
+          - name: date
+            data_type: varchar
+            description: "The date the match was played in american format, seperated by '-''."
+          - name: result
+            data_type: varchar
+            description: "The result of the match on the pov player's part. Either WIN or LOSS."
+          - name: total_turns
+            data_type: number
+            description: "Total amount of turns in the match."
+          - name: turn_number
+            data_type: number
+            description: "The number of the current turn."
+          - name: active_pokemon_name
+            data_type: varchar
+            description: "The active player's pokemon's name. Refers to species or species variant, not nickname."
+          - name: active_pokemon_base_species
+            data_type: varchar
+            description: "The active player's pokemon's base species. Does not specify variant forms."
+          - name: active_pokemon_hp
+            data_type: number
+            description: "The active pokemon's current hp. Represented percentage-wise between 0 and 1"
+          - name: active_pokemon_status
+            data_type: varchar
+            description: "The active pokemon's status. It could be sleeping, poisoned, frozen, etc"
+          - name: active_pokemon_effect
+            description: "The active pokemon's effect. Things like taunt."
+            data_type: varchar
+          - name: move_1_pp
+            data_type: number
+            description: "The remaining uses of the first move in the active pokemon's moveset"
+          - name: move_2_pp
+            data_type: number
+            description: "The remaining uses of the second move in the active pokemon's moveset"
+          - name: move_3_pp
+            data_type: number
+            description: "The remaining uses of the third move in the active pokemon's moveset"
+          - name: move_4_pp
+            data_type: number
+            description: "The remaining uses of the fourth move in the active pokemon's moveset"
+          - name: opponent_pokemon_name
+            data_type: varchar
+            description: "The oppponent's active pokemon's form name."
+          - name: opponent_pokemon_species
+            data_type: varchar
+            description: "The opponent's active pokemon's base species."
+          - name: opponent_pokemon_hp
+            data_type: number
+            description: "The opponent's active pokemon's current health. Percentage from 0 to 1."
+          - name: opponent_pokemon_status
+            data_type: varchar
+            description: "The opponent's active pokemon's current status."
+          - name: opponent_pokemon_effect
+            data_type: varchar
+            description: "The opponent's active pokemon's current effect."
+          - name: pov_last_move
+            description: "The current active pokemon's last used successful move. Can be from turn beyond the last if moves have failed."
+            data_type: varchar
+          - name: opponent_last_move
+            data_type: varchar
+            description: "The opponent's active pokemon's last used successful move."
+          - name: next_action
+            data_type: varchar
+            description: "The next action chosen by the player for the next turn. Can be a move or the name of a pokemon they will switch to. If it is 'failed' it doesn't end up working or it's the end of the match."
+          - name: sync_date
+            data_type: timestamp_tz
+            description: "The time this row was ingested."
+
+      - name: pokemon_data
+        description: "Contains the data of the pokemons used in each match."
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+                combination_of_columns:
+                  - battle_id
+                  - trainer
+                  - name
+        columns:
+          - name: battle_id
+            data_type: varchar
+            description: "The id of the match the pokemon was used in."
+          - name: trainer
+            data_type: varchar
+            description: "The name of the trainer that used this pokemon in a match."
+          - name: name
+            data_type: varchar
+            description: "The name of the pokemon's form."
+          - name: base_species
+            data_type: varchar
+            description: "The name of the pokemon's base species."
+          - name: item
+            data_type: varchar
+            description: "The name of the item the pokemon held at the start of the match."
+          - name: ability
+            data_type: varchar
+            description: "The name of the ability chosen for the pokemon."
+          - name: lvl
+            data_type: number
+            description: "The level the pokemon is at."
+          - name: move_1
+            data_type: varchar
+            description: "The first move in the pokemon's moveset."
+          - name: move_2
+            data_type: varchar
+            description: "The second move in the pokemon's moveset."
+          - name: move_3
+            data_type: varchar
+            description: "The third move in the pokemon's moveset."
+          - name: move_4
+            data_type: varchar
+            description: "The first move in the pokemon's moveset."
+          - name: sync_date
+            data_type: timestamp_tz
+            description: "The date this row was ingested."
