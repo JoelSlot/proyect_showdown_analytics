@@ -1,19 +1,21 @@
-with 
+with
 
-source as (
-
-    select * from {{ source('pokeapi_data', 'abilities') }}
-
+abilities as (
+    select * from {{ref('base_pokeapi_data__abilities')}}
 ),
 
-renamed as (
 
+effects as (
+    select * from {{ref('base_pokeapi_data__ability_effects')}}
+),
+
+new_model as(
     select
-        id::INTEGER AS ABILITY_ID,
-        REPLACE(identifier, '-', ' ')::Varchar AS ABILITY_NAME
-
-    from source
-
+        a.ABILITY_ID,
+        a.ABILITY_NAME,
+        e.ABILITY_EFFECT
+    FROM abilities a
+        LEFT JOIN effects e ON a.ABILITY_ID = e.ABILITY_ID
 )
 
-select * from renamed
+select * from new_model

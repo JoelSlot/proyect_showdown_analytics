@@ -1,6 +1,6 @@
 
 models:
-  - name: stg_pokeapi_data__item_prose
+  - name: base_pokeapi_data__item_prose
     description: ""
     columns:
       - name: item_id
@@ -153,6 +153,28 @@ models:
         data_type: varchar
         description: ""
 
+  - name: base_pokeapi_data__abilities
+    description: ""
+    columns:
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: ability_name
+        data_type: varchar
+        description: ""
+
+  - name: base_pokeapi_data__ability_effects
+    description: ""
+    columns:
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: ability_effect
+        data_type: varchar
+        description: ""
+
   - name: stg_pokeapi_data__abilities
     description: ""
     columns:
@@ -161,6 +183,10 @@ models:
         description: ""
 
       - name: ability_name
+        data_type: varchar
+        description: ""
+
+      - name: ability_effect
         data_type: varchar
         description: ""
 
@@ -262,7 +288,7 @@ models:
         data_type: number
         description: ""
 
-  - name: stg_pokeapi_data__items
+  - name: base_pokeapi_data__items
     description: ""
     columns:
       - name: item_id
@@ -270,5 +296,36 @@ models:
         description: ""
 
       - name: item_name
+        data_type: varchar
+        description: ""
+
+  - name: base_pokeapi_data__item_names
+    description: ""
+    columns:
+
+    - name: item_id
+      data_type: number
+      description: ""
+
+    - name: name
+      data_type: number
+      description: ""
+
+  - name: stg_pokeapi_data__items
+    description: ""
+    columns:
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: item_identifier
+        data_type: varchar
+        description: ""
+
+      - name: item_name
+        data_type: varchar
+        description: ""
+
+      - name: item_effect
         data_type: varchar
         description: ""

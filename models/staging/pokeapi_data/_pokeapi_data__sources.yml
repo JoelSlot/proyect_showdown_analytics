@@ -11,6 +11,13 @@ sources:
           - name: identifier
             data_type: varchar
 
+      - name: ability_verbose
+        columns:
+          - name: ability_id
+            data_type: number
+          - name: flavor_text
+            data_type: varchar
+
       - name: item_prose
         columns:
           - name: item_id
@@ -24,6 +31,13 @@ sources:
             data_type: number
           - name: identifier
             data_type: varchar
+      - name: item_names
+        columns:
+          - name: item_id
+            data_type: number
+          - name: name
+            data_type: varchar
+
 
       - name: move_names
         columns:
