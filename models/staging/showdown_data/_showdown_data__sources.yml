@@ -15,84 +15,142 @@ sources:
           - name: battle_id
             data_type: varchar
             description: "Unique id of the played out  match."
+            data_tests:
+              - not_null
           - name: format
             data_type: varchar
             description: "The competitive format the match was played in."
+            data_tests:
+              - not_null
           - name: elo
             data_type: varchar
             description: "The competitive score of the match. It's value can be 'Unrated'"
+            data_tests:
+              - not_null
           - name: pov
             data_type: varchar
             description: "The name of the player who's point of view it is."
+            data_tests:
+              - not_null
           - name: opponent
             data_type: varchar
             description: "The name of the opposing player."
+            data_tests:
+              - not_null
           - name: date
             data_type: varchar
             description: "The date the match was played in american format, seperated by '-''."
+            data_tests:
+              - not_null
           - name: result
             data_type: varchar
             description: "The result of the match on the pov player's part. Either WIN or LOSS."
+            data_tests:
+              - not_null
+              - accepted_values:
+                  values:
+                    - 'WIN'
+                    - 'LOSS'
           - name: total_turns
             data_type: number
             description: "Total amount of turns in the match."
+            data_tests:
+              - not_null
           - name: turn_number
             data_type: number
             description: "The number of the current turn."
+            data_tests:
+              - not_null
           - name: active_pokemon_name
             data_type: varchar
             description: "The active player's pokemon's name. Refers to species or species variant, not nickname."
+            data_tests:
+              - not_null
           - name: active_pokemon_base_species
             data_type: varchar
             description: "The active player's pokemon's base species. Does not specify variant forms."
+            data_tests:
+              - not_null
           - name: active_pokemon_hp
             data_type: number
             description: "The active pokemon's current hp. Represented percentage-wise between 0 and 1"
+            data_tests:
+              - not_null
           - name: active_pokemon_status
             data_type: varchar
             description: "The active pokemon's status. It could be sleeping, poisoned, frozen, etc"
+            data_tests:
+              - not_null
           - name: active_pokemon_effect
             description: "The active pokemon's effect. Things like taunt."
             data_type: varchar
+            data_tests:
+              - not_null
           - name: move_1_pp
             data_type: number
             description: "The remaining uses of the first move in the active pokemon's moveset"
+            data_tests:
+              - not_null
           - name: move_2_pp
             data_type: number
             description: "The remaining uses of the second move in the active pokemon's moveset"
+            data_tests:
+              - not_null
           - name: move_3_pp
             data_type: number
             description: "The remaining uses of the third move in the active pokemon's moveset"
+            data_tests:
+              - not_null
           - name: move_4_pp
             data_type: number
             description: "The remaining uses of the fourth move in the active pokemon's moveset"
+            data_tests:
+              - not_null
           - name: opponent_pokemon_name
             data_type: varchar
             description: "The oppponent's active pokemon's form name."
+            data_tests:
+              - not_null
           - name: opponent_pokemon_species
             data_type: varchar
             description: "The opponent's active pokemon's base species."
+            data_tests:
+              - not_null
           - name: opponent_pokemon_hp
             data_type: number
             description: "The opponent's active pokemon's current health. Percentage from 0 to 1."
+            data_tests:
+              - not_null
           - name: opponent_pokemon_status
             data_type: varchar
             description: "The opponent's active pokemon's current status."
+            data_tests:
+              - not_null
           - name: opponent_pokemon_effect
             data_type: varchar
             description: "The opponent's active pokemon's current effect."
+            data_tests:
+              - not_null
           - name: pov_last_move
             description: "The current active pokemon's last used successful move. Can be from turn beyond the last if moves have failed."
+            data_tests:
+              - not_null
             data_type: varchar
           - name: opponent_last_move
             data_type: varchar
             description: "The opponent's active pokemon's last used successful move."
+            data_tests:
+              - not_null
           - name: next_action
             data_type: varchar
             description: "The next action chosen by the player for the next turn. Can be a move or the name of a pokemon they will switch to. If it is 'failed' it doesn't end up working or it's the end of the match."
+            data_tests:
+              - not_null
           - name: sync_date
             data_type: timestamp_tz
             description: "The time this row was ingested."
+            data_tests:
+              - not_null
 
       - name: pokemon_data
         description: "Contains the data of the pokemons used in each match."
