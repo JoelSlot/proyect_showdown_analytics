@@ -1,0 +1,274 @@
+
+models:
+  - name: stg_pokeapi_data__item_prose
+    description: ""
+    columns:
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: item_effect
+        data_type: varchar
+        description: ""
+
+  - name: stg_pokeapi_data__pokemon_stats
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: stat_id
+        data_type: number
+        description: ""
+
+      - name: base_stat
+        data_type: number
+        description: ""
+
+  - name: stg_pokeapi_data__stats
+    description: ""
+    columns:
+      - name: stat_id
+        data_type: number
+        description: ""
+
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+      - name: stat_name
+        data_type: varchar
+        description: ""
+
+  - name: stg_pokeapi_data__pokemon_moves
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: move_id
+        data_type: number
+        description: ""
+
+  - name: base_pokeapi_data__moves
+    description: ""
+    columns:
+      - name: move_id
+        data_type: number
+        description: ""
+
+      - name: move_identifier
+        data_type: varchar
+        description: ""
+
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: power
+        data_type: number
+        description: ""
+
+      - name: pp
+        data_type: number
+        description: ""
+
+      - name: accuracy
+        data_type: number
+        description: ""
+
+      - name: priority
+        data_type: number
+        description: ""
+
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+
+  - name: stg_pokeapi_data__moves
+    description: ""
+    columns:
+      - name: move_id
+        data_type: number
+        description: ""
+
+      - name: move_identifier
+        data_type: varchar
+        description: ""
+
+      - name: move_name
+        data_type: varchar
+        description: ""
+
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: power
+        data_type: number
+        description: ""
+
+      - name: pp
+        data_type: number
+        description: ""
+
+      - name: accuracy
+        data_type: number
+        description: ""
+
+      - name: priority
+        data_type: number
+        description: ""
+
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+  - name: stg_pokeapi_data__pokemon_type_efficacy
+    description: ""
+    columns:
+      - name: damage_type_id
+        data_type: number
+        description: ""
+
+      - name: target_type_id
+        data_type: number
+        description: ""
+
+      - name: damage_factor
+        data_type: number
+        description: ""
+
+  - name: stg_pokeapi_data__move_damage_classes
+    description: ""
+    columns:
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+      - name: damage_class_name
+        data_type: varchar
+        description: ""
+
+  - name: stg_pokeapi_data__abilities
+    description: ""
+    columns:
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: ability_name
+        data_type: varchar
+        description: ""
+
+  - name: base_pokeapi_data__pokemon_forms
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: form_name
+        data_type: varchar
+        description: ""
+
+      - name: form_identifier
+        data_type: varchar
+        description: ""
+
+      - name: is_default
+        data_type: boolean
+        description: ""
+
+      - name: form_order
+        data_type: number
+        description: ""
+
+  - name: sql_pokeapi_data__pokemon_forms
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: form_name
+        data_type: varchar
+        description: ""
+
+      - name: is_default
+        data_type: boolean
+        description: ""
+
+      - name: form_order
+        data_type: number
+        description: ""
+
+  - name: base_pokeapi_data__move_names
+    description: ""
+    columns:
+      - name: move_id
+        data_type: number
+        description: ""
+
+      - name: move_name
+        data_type: varchar
+        description: ""
+
+  - name: stg_pokeapi_data__types
+    description: ""
+    columns:
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: type_name
+        data_type: varchar
+        description: ""
+
+  - name: stg_pokeapi_data__pokemon_abilities
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: is_hidden
+        data_type: boolean
+        description: ""
+
+      - name: ability_slot
+        data_type: number
+        description: ""
+
+  - name: stg_pokeapi_data__pokemon_types
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: slot
+        data_type: number
+        description: ""
+
+  - name: stg_pokeapi_data__items
+    description: ""
+    columns:
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: item_name
+        data_type: varchar
+        description: ""

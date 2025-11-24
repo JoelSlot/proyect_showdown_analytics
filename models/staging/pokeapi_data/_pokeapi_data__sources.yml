@@ -1,0 +1,156 @@
+version: 2
+
+sources:
+  - name: pokeapi_data
+    database: PROYECT_SHOWDOWN_DEV_BRONZE
+    tables:
+      - name: abilities
+        columns:
+          - name: id
+            data_type: number
+          - name: identifier
+            data_type: varchar
+
+      - name: item_prose
+        columns:
+          - name: item_id
+            data_type: number
+          - name: item_effect
+            data_type: varchar
+
+      - name: items
+        columns:
+          - name: id
+            data_type: number
+          - name: identifier
+            data_type: varchar
+
+      - name: move_names
+        columns:
+          - name: move_id
+            data_type: number
+          - name: name
+            data_type: varchar
+
+      - name: moves
+        columns:
+          - name: id
+            data_type: number
+          - name: identifier
+            data_type: varchar
+          - name: generation_id
+            data_type: number
+          - name: type_id
+            data_type: number
+          - name: power
+            data_type: number
+          - name: pp
+            data_type: number
+          - name: accuracy
+            data_type: number
+          - name: priority
+            data_type: number
+          - name: damage_class_id
+            data_type: number
+        
+      - name: move_damage_classes
+        columns:
+          - name: id
+            data_type: number
+          - name: identifier
+            data_type: varchar
+
+      - name: pokemon_abilities
+        columns:
+          - name: pokemon_id
+            data_type: number
+          - name: ability_id
+            data_type: number
+          - name: is_hidden
+            data_type: number
+          - name: slot
+            data_type: number
+
+      - name: pokemon_characteristics
+        columns:
+          - name: id
+            data_type: number
+          - name: identifier
+            data_type: varchar
+          - name: species_id
+            data_type: number
+          - name: height
+            data_type: number
+          - name: weight
+            data_type: number
+          - name: base_experience
+            data_type: number
+
+      - name: pokemon_forms
+        columns:
+          - name: identifier
+            data_type: varchar
+          - name: form_identifier
+            data_type: varchar
+          - name: pokemon_id
+            data_type: number
+          - name: introduced_in_version_group_id
+            data_type: number
+          - name: is_default
+            data_type: number
+          - name: form_order
+            data_type: number
+
+      - name: pokemon_moves
+        columns:
+          - name: pokemon_id
+            data_type: number
+          - name: version_group_id
+            data_type: number
+          - name: move_id
+            data_type: number
+
+      - name: pokemon_stats
+        columns:
+          - name: pokemon_id
+            data_type: number
+          - name: stat_id
+            data_type: number
+          - name: base_stat
+            data_type: number
+
+      - name: pokemon_type_efficacy
+        columns:
+          - name: damage_type_id
+            data_type: number
+          - name: target_type_id
+            data_type: number
+          - name: damage_factor
+            data_type: number
+
+      - name: pokemon_types
+        columns:
+          - name: pokemon_id
+            data_type: number
+          - name: type_id
+            data_type: number
+          - name: slot
+            data_type: number
+
+      - name: stats
+        columns:
+          - name: id
+            data_type: number
+          - name: damage_class_id
+            data_type: number
+          - name: identifier
+            data_type: varchar
+          - name: game_index
+            data_type: number
+
+      - name: types
+        columns:
+          - name: id
+            data_type: number
+          - name: identifier
+            data_type: varchar

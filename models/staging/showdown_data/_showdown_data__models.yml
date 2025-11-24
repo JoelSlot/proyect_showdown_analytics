@@ -1,0 +1,165 @@
+
+version: 2
+
+models:
+  - name: base_showdown_data__pokemon_data
+    description: ""
+    columns:
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_name
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_base_species
+        data_type: varchar
+        description: ""
+
+      - name: item
+        data_type: varchar
+        description: ""
+
+      - name: ability
+        data_type: varchar
+        description: ""
+
+      - name: lvl
+        data_type: number
+        description: ""
+
+      - name: move_1
+        data_type: varchar
+        description: ""
+
+      - name: move_2
+        data_type: varchar
+        description: ""
+
+      - name: move_3
+        data_type: varchar
+        description: ""
+
+      - name: move_4
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: base_showdown_data__match_data
+    description: ""
+    columns:
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: format
+        data_type: varchar
+        description: ""
+
+      - name: elo
+        data_type: varchar
+        description: ""
+
+      - name: pov
+        data_type: varchar
+        description: ""
+
+      - name: opponent
+        data_type: varchar
+        description: ""
+
+      - name: battle_date
+        data_type: varchar
+        description: ""
+
+      - name: result
+        data_type: varchar
+        description: ""
+
+      - name: total_turns
+        data_type: number
+        description: ""
+
+      - name: turn_number
+        data_type: number
+        description: ""
+
+      - name: active_pokemon_name
+        data_type: varchar
+        description: ""
+
+      - name: active_pokemon_base_species
+        data_type: varchar
+        description: ""
+
+      - name: active_pokemon_hp
+        data_type: float
+        description: ""
+
+      - name: active_pokemon_status
+        data_type: varchar
+        description: ""
+
+      - name: active_pokemon_effect
+        data_type: varchar
+        description: ""
+
+      - name: move_1_pp
+        data_type: number
+        description: ""
+
+      - name: move_2_pp
+        data_type: number
+        description: ""
+
+      - name: move_3_pp
+        data_type: number
+        description: ""
+
+      - name: move_4_pp
+        data_type: number
+        description: ""
+
+      - name: opponent_pokemon_name
+        data_type: varchar
+        description: ""
+
+      - name: opponent_pokemon_base_species
+        data_type: varchar
+        description: ""
+
+      - name: opponent_pokemon_hp
+        data_type: float
+        description: ""
+
+      - name: opponent_pokemon_status
+        data_type: varchar
+        description: ""
+
+      - name: opponent_pokemon_effect
+        data_type: varchar
+        description: ""
+
+      - name: pov_last_move
+        data_type: varchar
+        description: ""
+
+      - name: opponent_last_move
+        data_type: varchar
+        description: ""
+
+      - name: next_action
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""

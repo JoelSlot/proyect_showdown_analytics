@@ -139,3 +139,4 @@ sources:
           - name: sync_date
             data_type: timestamp_tz
             description: "The date this row was ingested."
+            
