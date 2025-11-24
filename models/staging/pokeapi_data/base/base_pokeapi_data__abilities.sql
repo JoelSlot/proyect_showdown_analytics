@@ -10,7 +10,7 @@ renamed as (
 
     select
         id::INTEGER AS ABILITY_ID,
-        REPLACE(identifier, '-', ' ')::Varchar AS ABILITY_NAME
+        REPLACE(identifier, '-', '')::Varchar AS ABILITY_IDENTIFIER
 
     from source
 

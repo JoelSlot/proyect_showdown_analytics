@@ -21,7 +21,9 @@ pokemon_data as (
 items as (
     select * from {{ ref('base_pokeapi_data__items')}}
 ),
-
+abilities as (
+    select * from {{ref('base_pokeapi_data__abilities')}}
+),
 new_pokemon_data as (
 
     select * from pokemon_data
@@ -40,9 +42,9 @@ first_form_match as (
         d.BATTLE_ID,
         md5(d.TRAINER) AS TRAINER_ID,
         f.POKEMON_ID,
-        d.POKEMON_NAME,
+        d.POKEMON_NAME, --for if no pokemon_id was matched
         i.ITEM_ID,
-        d.ABILITY,
+        a.ABILITY_ID,
         d.LVL,
         d.MOVE_1,
         d.MOVE_2,
@@ -52,6 +54,7 @@ first_form_match as (
     FROM new_pokemon_data d
         LEFT JOIN forms f ON replace(d.POKEMON_NAME, '-', '') = replace(f.FORM_NAME, '-', '')
         LEFT JOIN items i ON d.item = i.ITEM_IDENTIFIER
+        LEFT JOIN abilities a ON d.ABILITY = a.ABILITY_IDENTIFIER
 ),
 
 base_forms as (
@@ -71,7 +74,7 @@ second_form_match as (
             ELSE f.POKEMON_ID
         END AS POKEMON_ID,
         d.ITEM_ID,
-        d.ABILITY,
+        d.ABILITY_ID,
         d.LVL,
         d.MOVE_1,
         d.MOVE_2,

@@ -18,6 +18,13 @@ sources:
           - name: flavor_text
             data_type: varchar
 
+      - name: ability_names
+        columns:
+          - name: ability_id
+            data_type: number
+          - name: name
+            data_type: varchar
+
       - name: item_prose
         columns:
           - name: item_id

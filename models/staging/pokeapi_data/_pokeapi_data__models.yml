@@ -160,7 +160,7 @@ models:
         data_type: number
         description: ""
 
-      - name: ability_name
+      - name: ability_identifier
         data_type: varchar
         description: ""
 
@@ -180,6 +180,10 @@ models:
     columns:
       - name: ability_id
         data_type: number
+        description: ""
+
+      - name: ability_identifier
+        data_type: varchar
         description: ""
 
       - name: ability_name
