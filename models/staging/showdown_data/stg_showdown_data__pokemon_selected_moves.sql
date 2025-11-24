@@ -18,12 +18,6 @@ pokemon_data as (
     select * from {{ ref('base_showdown_data__pokemon_data') }}
   
 ),
-items as (
-    select * from {{ ref('base_pokeapi_data__items')}}
-),
-abilities as (
-    select * from {{ref('base_pokeapi_data__abilities')}}
-),
 new_pokemon_data as (
 
     select * from pokemon_data
@@ -43,14 +37,13 @@ first_form_match as (
         md5(d.TRAINER) AS TRAINER_ID,
         f.POKEMON_ID,
         d.POKEMON_NAME, --for if no pokemon_id was matched
-        i.ITEM_ID,
-        a.ABILITY_ID,
-        d.LVL,
+        d.MOVE_1,
+        d.MOVE_2,
+        d.MOVE_3,
+        d.MOVE_4,
         d.sync_date
     FROM new_pokemon_data d
         LEFT JOIN forms f ON replace(d.POKEMON_NAME, '-', '') = replace(f.FORM_NAME, '-', '')
-        LEFT JOIN items i ON d.item = i.ITEM_IDENTIFIER
-        LEFT JOIN abilities a ON d.ABILITY = a.ABILITY_IDENTIFIER
 ),
 
 base_forms as (
@@ -69,29 +62,28 @@ second_form_match as (
             WHEN d.POKEMON_ID IS NOT NULL THEN d.POKEMON_ID
             ELSE f.POKEMON_ID
         END AS POKEMON_ID,
-        d.ITEM_ID,
-        d.ABILITY_ID,
-        d.LVL,
+        d.MOVE_1,
+        d.MOVE_2,
+        d.MOVE_3,
+        d.MOVE_4,
         d.sync_date
     FROM first_form_match d
         LEFT JOIN base_forms f ON replace(d.POKEMON_NAME, '-', '') = f.BASE_FORM
 ),
 
-added_surrogate_key as(
+sur_key_and_separated as(
+    {% set move_cols = ['move_1', 'move_2', 'move_3', 'move_4'] %}
+
+    {% for col in move_cols %}
     select
-        CONCAT(BATTLE_ID, '-', TRAINER_ID, '-', POKEMON_ID) AS POKEMON_DATA_ID,
-        BATTLE_ID,
-        TRAINER_ID,
-        POKEMON_ID,
-        ITEM_ID,
-        ABILITY_ID,
-        LVL,
-        sync_date
-    FROM second_form_match
+        CONCAT(p.BATTLE_ID, '-', p.TRAINER_ID, '-', p.POKEMON_ID) AS POKEMON_DATA_ID,
+        m.MOVE_ID as move_ID,
+        p.sync_date
+    from second_form_match p
+        LEFT JOIN moves m ON m.MOVE_IDENTIFIER = p.{{col}} 
+    where {{ col }} != 'nomove'
+    {% if not loop.last %}union all{% endif %}
+    {% endfor %}
 )
 
-
-
-
-
-select * from added_surrogate_key
+select * from sur_key_and_separated

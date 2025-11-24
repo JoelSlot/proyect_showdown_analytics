@@ -58,10 +58,14 @@ models:
       - name: move_id
         data_type: number
         description: ""
+        data_tests:
+          - unique
 
       - name: move_identifier
         data_type: varchar
         description: ""
+        data_tests:
+          - unique
 
       - name: type_id
         data_type: number
@@ -159,6 +163,8 @@ models:
       - name: ability_id
         data_type: number
         description: ""
+        data_tests:
+          - unique
 
       - name: ability_identifier
         data_type: varchar
@@ -170,6 +176,8 @@ models:
       - name: ability_id
         data_type: number
         description: ""
+        data_tests:
+          - unique
 
       - name: ability_effect
         data_type: varchar
@@ -298,6 +306,8 @@ models:
       - name: item_id
         data_type: number
         description: ""
+        data_tests:
+          - unique
 
       - name: item_name
         data_type: varchar
@@ -321,6 +331,8 @@ models:
       - name: item_id
         data_type: number
         description: ""
+        data_tests:
+          - unique
 
       - name: item_identifier
         data_type: varchar
