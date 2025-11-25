@@ -33,6 +33,8 @@ new_model as (
         BATTLE_ID,
         md5(FORMAT) AS FORMAT_ID,
         CASE WHEN ELO = 'Unrated' THEN 0
+        ELSE 1 END::BOOLEAN AS IS_RATED,
+        CASE WHEN ELO = 'Unrated' THEN -1
         ELSE ELO
         END::INTEGER AS ELO,
         md5(POV) AS WINNER_ID,

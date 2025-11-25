@@ -314,3 +314,18 @@ models:
       - name: sync_date
         data_type: timestamp_tz
         description: ""
+
+  - name: stg_showdown_data__formats
+    description: ""
+    columns:
+      - name: format_id
+        data_type: varchar
+        description: ""
+
+      - name: format_name
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
