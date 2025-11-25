@@ -85,17 +85,21 @@ match_move as (
         d.POKEMON_HP,
         d.POKEMON_STATUS,
         d.POKEMON_EFFECT,
-        d.LAST_MOVE,
+        CASE
+            WHEN lm.MOVE_ID IS NULL THEN -1
+            ELSE lm.MOVE_ID
+        END::INTEGER AS LAST_MOVE_ID,
         CASE
             WHEN d.NEXT_ACTION = 'failure' THEN d.NEXT_ACTION
             WHEN d.NEXT_ACTION = 'match_end' THEN d.NEXT_ACTION
             WHEN m.MOVE_ID IS NULL THEN 'switch_pokemon'
             ELSE 'use_move'
         END AS NEXT_ACTION,
-        COALESCE(m.MOVE_ID, -1)  AS NEXT_MOVE_ID,
+        COALESCE(m.MOVE_ID, -1)::INTEGER  AS NEXT_MOVE_ID,
         d.sync_date
     FROM second_form_match d
         LEFT JOIN moves m ON m.MOVE_IDENTIFIER = d.NEXT_ACTION
+        LEFT JOIN moves lm ON lm.MOVE_IDENTIFIER = d.LAST_MOVE
 )
 
 

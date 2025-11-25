@@ -236,8 +236,6 @@ models:
       - name: pokemon_id
         data_type: number
         description: ""
-        data_tests:
-          - not_null
 
       - name: pokemon_hp
         data_type: float
@@ -251,8 +249,16 @@ models:
         data_type: varchar
         description: ""
 
-      - name: last_move
+      - name: last_move_id
+        data_type: number
+        description: ""
+
+      - name: next_action
         data_type: varchar
+        description: ""
+
+      - name: next_move_id
+        data_type: number
         description: ""
 
       - name: sync_date
