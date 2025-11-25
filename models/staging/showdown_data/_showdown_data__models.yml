@@ -184,7 +184,7 @@ models:
         description: ""
 
       - name: elo
-        data_type: varchar
+        data_type: numeric
         description: ""
 
       - name: winner_id

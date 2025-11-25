@@ -32,7 +32,9 @@ new_model as (
     select
         BATTLE_ID,
         md5(FORMAT) AS FORMAT_ID,
-        ELO,
+        CASE WHEN ELO = 'Unrated' THEN 0
+        ELSE ELO
+        END::INTEGER AS ELO,
         md5(POV) AS WINNER_ID,
         md5(OPPONENT) AS LOSER_ID,
         TO_DATE(BATTLE_DATE, 'MM-DD-YYYY') AS BATTLE_DATE,
