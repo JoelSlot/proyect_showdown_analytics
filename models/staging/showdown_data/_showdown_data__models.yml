@@ -169,3 +169,142 @@ models:
       - name: sync_date
         data_type: timestamp_tz
         description: ""
+
+
+
+  - name: stg_showdown_data__battles
+    description: ""
+    columns:
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: format_id
+        data_type: varchar
+        description: ""
+
+      - name: elo
+        data_type: varchar
+        description: ""
+
+      - name: winner_id
+        data_type: varchar
+        description: ""
+
+      - name: loser_id
+        data_type: varchar
+        description: ""
+
+      - name: battle_date
+        data_type: date
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_showdown_data__trainers
+    description: ""
+    columns:
+      - name: trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer_name
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_showdown_data__turns
+    description: ""
+    columns:
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: pov_trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: turn_number
+        data_type: number
+        description: ""
+
+      - name: pokemon_id
+        data_type: number
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: pokemon_hp
+        data_type: float
+        description: ""
+
+      - name: pokemon_status
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_effect
+        data_type: varchar
+        description: ""
+
+      - name: last_move
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_showdown_data__pokemon_data
+    description: ""
+    columns:
+      - name: pokemon_data_id
+        data_type: varchar
+        description: ""
+
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: lvl
+        data_type: number
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_showdown_data__pokemon_selected_moves
+    description: ""
+    columns:
+      - name: pokemon_data_id
+        data_type: varchar
+        description: ""
+
+      - name: move_id
+        data_type: number
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
