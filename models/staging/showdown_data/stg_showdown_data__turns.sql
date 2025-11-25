@@ -28,7 +28,7 @@ new_match_data as (
 
 first_form_match as (
 
-    select
+    select DISTINCT
         d.BATTLE_ID,
         md5(d.POV) AS POV_TRAINER_ID,
         d.TURN_NUMBER,
@@ -53,7 +53,7 @@ base_forms as (
 
 second_form_match as (
 
-    select
+    select DISTINCT
         d.BATTLE_ID,
         d.POV_TRAINER_ID,
         d.TURN_NUMBER,
