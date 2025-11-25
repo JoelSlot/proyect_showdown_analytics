@@ -80,7 +80,7 @@ sur_key_and_separated as(
         m.MOVE_ID as move_ID,
         p.sync_date
     from second_form_match p
-        LEFT JOIN moves m ON m.MOVE_IDENTIFIER = p.{{col}} 
+        LEFT JOIN moves m ON m.MOVE_IDENTIFIER = replace(p.{{col}}, '-', '') 
     where {{ col }} != 'nomove'
     {% if not loop.last %}union all{% endif %}
     {% endfor %}
