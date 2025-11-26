@@ -39,6 +39,7 @@ new_model as (
         END::INTEGER AS ELO,
         md5(POV) AS WINNER_ID,
         md5(OPPONENT) AS LOSER_ID,
+        TOTAL_TURNS,
         TO_DATE(BATTLE_DATE, 'MM-DD-YYYY') AS BATTLE_DATE,
         sync_date
 

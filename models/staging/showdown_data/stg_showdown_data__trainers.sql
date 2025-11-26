@@ -12,14 +12,16 @@ with match_data as (
 
 new_match_data as (
 
-    select DISTINCT POV, sync_date from match_data
+    select POV, MAX(sync_date) as sync_date from match_data 
 
     {% if is_incremental() %}
+        where sync_date > (select max(sync_date) from {{ this }})
+    {% endif %}
 
-    where sync_date > (select max(sync_date) from {{ this }})
+    GROUP BY POV
 
-    having POV NOT IN (select trainer_name from {{ this }})
-
+    {% if is_incremental() %}
+        having POV NOT IN (select trainer_name from {{ this }})
     {% endif %}
 
 ),

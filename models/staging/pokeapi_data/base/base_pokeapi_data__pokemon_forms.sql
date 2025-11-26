@@ -9,6 +9,7 @@ source as (
 renamed as (
 
     select
+        ID::INTEGER AS POKEMON_FORM_ID, 
         POKEMON_ID::INTEGER AS POKEMON_ID,
         identifier::VARCHAR AS FORM_NAME,
         form_identifier::VARCHAR AS FORM_IDENTIFIER,

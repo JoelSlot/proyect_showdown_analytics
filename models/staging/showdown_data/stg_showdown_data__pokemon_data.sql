@@ -90,8 +90,4 @@ added_surrogate_key as(
     FROM second_form_match
 )
 
-
-
-
-
 select * from added_surrogate_key

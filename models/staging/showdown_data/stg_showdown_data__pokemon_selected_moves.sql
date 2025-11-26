@@ -78,6 +78,7 @@ sur_key_and_separated as(
     select
         CONCAT(p.BATTLE_ID, '-', p.TRAINER_ID, '-', p.POKEMON_ID) AS POKEMON_DATA_ID,
         m.MOVE_ID as move_ID,
+        right('{{col}}',1) as MOVESET_ORDER,
         p.sync_date
     from second_form_match p
         LEFT JOIN moves m ON m.MOVE_IDENTIFIER = replace(p.{{col}}, '-', '') 

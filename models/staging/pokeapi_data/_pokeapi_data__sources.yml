@@ -175,3 +175,10 @@ sources:
             data_type: number
           - name: identifier
             data_type: varchar
+
+      - name: pokemon_form_generations
+        columns:
+          - name: pokemon_form_id
+            data_type: number
+          - name: generation_id
+            data_type: number

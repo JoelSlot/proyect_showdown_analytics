@@ -18,7 +18,8 @@ renamed as (
         priority::INTEGER AS PRIORITY,
         damage_class_id::INTEGER AS DAMAGE_CLASS_ID
     from source
-    WHERE generation_id < 5
+    WHERE generation_id < 5 --removes new gen moves
+            AND MOVE_ID < 1000 --removes pokemon DX moves
 
 )
 

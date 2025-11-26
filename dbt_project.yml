@@ -44,5 +44,11 @@ models:
       showdown_data:
         schema: SHOWDOWN_DATA
     marts:
-      +database: PROYECT_SHOWDOWN_DEV_GOLD
+      database: PROYECT_SHOWDOWN_DEV_GOLD
+      core:
+        schema: CORE
+      turns:
+        schema: TURNS
+      battles:
+        schema: BATTLES
     # Applies to all files under models/example/
