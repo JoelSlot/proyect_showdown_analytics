@@ -1,0 +1,64 @@
+
+models:
+  - name: fct_pokemon_usage
+    description: ""
+    columns:
+      - name: pokemon_data_id
+        data_type: varchar
+        description: ""
+
+      - name: format_id
+        data_type: varchar
+        description: ""
+
+      - name: team_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: lvl
+        data_type: number
+        description: ""
+
+      - name: battle_result
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+
+  - name: dim_pokemon_selected_moves
+    description: ""
+    columns:
+      - name: pokemon_data_id
+        data_type: varchar
+        description: ""
+
+      - name: move_id
+        data_type: number
+        description: ""
+
+      - name: moveset_order
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""

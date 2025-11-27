@@ -8,7 +8,7 @@ source as (
 
 renamed as (
 
-    select
+    select DISTINCT
         pokemon_id::INTEGER AS POKEMON_ID,
         type_id::INTEGER AS TYPE_ID,
         slot::INTEGER AS SLOT

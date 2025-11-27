@@ -47,8 +47,6 @@ models:
       database: PROYECT_SHOWDOWN_DEV_GOLD
       core:
         schema: CORE
-      turns:
-        schema: TURNS
-      battles:
-        schema: BATTLES
+      pokemon_usage:
+        schema: POKEMON_USAGE
     # Applies to all files under models/example/

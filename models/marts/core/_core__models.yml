@@ -1,0 +1,412 @@
+
+models:
+  - name: dim_teams
+    description: ""
+    columns:
+      - name: team_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_set_1_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_set_2_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_set_3_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_set_4_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_set_5_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_set_6_id
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: dim_pokemon_sets
+    description: ""
+    columns:
+      - name: pokemon_data_id
+        data_type: varchar
+        description: ""
+
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: lvl
+        data_type: number
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: dim_format
+    description: ""
+    columns:
+      - name: format_id
+        data_type: varchar
+        description: ""
+
+      - name: format_name
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: dim_pokemon_forms
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: form_name
+        data_type: varchar
+        description: ""
+
+      - name: form_identifier
+        data_type: varchar
+        description: ""
+
+      - name: is_default
+        data_type: boolean
+        description: ""
+
+      - name: form_order
+        data_type: number
+        description: ""
+
+  - name: dim_trainers
+    description: ""
+    columns:
+      - name: trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer_name
+        data_type: varchar
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: dim_moves
+    description: ""
+    columns:
+      - name: move_id
+        data_type: number
+        description: ""
+
+      - name: move_identifier
+        data_type: varchar
+        description: ""
+
+      - name: move_name
+        data_type: varchar
+        description: ""
+
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: power
+        data_type: number
+        description: ""
+
+      - name: pp
+        data_type: number
+        description: ""
+
+      - name: accuracy
+        data_type: number
+        description: ""
+
+      - name: priority
+        data_type: number
+        description: ""
+
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+  - name: dim_pokemon_stats
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: stat_id
+        data_type: number
+        description: ""
+
+      - name: base_stat
+        data_type: number
+        description: ""
+
+  - name: dim_pokemon_learnable_moves
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: move_id
+        data_type: number
+        description: ""
+
+  - name: dim_abilities
+    description: ""
+    columns:
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: ability_identifier
+        data_type: varchar
+        description: ""
+
+      - name: ability_name
+        data_type: varchar
+        description: ""
+
+      - name: ability_effect
+        data_type: varchar
+        description: ""
+
+  - name: dim_stats
+    description: ""
+    columns:
+      - name: stat_id
+        data_type: number
+        description: ""
+
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+      - name: stat_name
+        data_type: varchar
+        description: ""
+
+  - name: dim_pokemon_types
+    description: ""
+    columns:
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: slot
+        data_type: number
+        description: ""
+
+  - name: dim_pokemon_type_efficacy
+    description: ""
+    columns:
+      - name: damage_type_id
+        data_type: number
+        description: ""
+
+      - name: target_type_id
+        data_type: number
+        description: ""
+
+      - name: damage_factor
+        data_type: number
+        description: ""
+
+  - name: dim_types
+    description: ""
+    columns:
+      - name: type_id
+        data_type: number
+        description: ""
+
+      - name: type_name
+        data_type: varchar
+        description: ""
+
+  - name: dim_items
+    description: ""
+    columns:
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: item_identifier
+        data_type: varchar
+        description: ""
+
+      - name: item_name
+        data_type: varchar
+        description: ""
+
+      - name: item_effect
+        data_type: varchar
+        description: ""
+
+  - name: dim_move_damage_classes
+    description: ""
+    columns:
+      - name: damage_class_id
+        data_type: number
+        description: ""
+
+      - name: damage_class_name
+        data_type: varchar
+        description: ""
+
+  - name: fct_pokemon_sets
+    description: ""
+    columns:
+      - name: pokemon_data_id
+        data_type: varchar
+        description: ""
+
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: item_id
+        data_type: number
+        description: ""
+
+      - name: ability_id
+        data_type: number
+        description: ""
+
+      - name: lvl
+        data_type: number
+        description: ""
+
+      - name: move_1
+        data_type: number
+        description: ""
+
+      - name: move_2
+        data_type: number
+        description: ""
+
+      - name: move_3
+        data_type: number
+        description: ""
+
+      - name: move_4
+        data_type: number
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
+
+  - name: fct_turns
+    description: ""
+    columns:
+      - name: battle_id
+        data_type: varchar
+        description: ""
+
+      - name: format_id
+        data_type: varchar
+        description: ""
+
+      - name: is_rated
+        data_type: boolean
+        description: ""
+
+      - name: elo
+        data_type: number
+        description: ""
+
+      - name: pov_trainer_id
+        data_type: varchar
+        description: ""
+
+      - name: is_winner
+        data_type: boolean
+        description: ""
+
+      - name: turn_number
+        data_type: number
+        description: ""
+
+      - name: pokemon_id
+        data_type: number
+        description: ""
+
+      - name: pokemon_hp
+        data_type: float
+        description: ""
+
+      - name: pokemon_status
+        data_type: varchar
+        description: ""
+
+      - name: pokemon_effect
+        data_type: varchar
+        description: ""
+
+      - name: last_move_id
+        data_type: number
+        description: ""
+
+      - name: next_action
+        data_type: varchar
+        description: ""
+
+      - name: next_move_id
+        data_type: number
+        description: ""
+
+      - name: battle_date
+        data_type: date
+        description: ""
+
+      - name: sync_date
+        data_type: timestamp_tz
+        description: ""
