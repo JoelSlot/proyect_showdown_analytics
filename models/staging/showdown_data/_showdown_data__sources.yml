@@ -3,14 +3,15 @@ sources:
     database: proyect_showdown_dev_bronze
     tables:
       - name: match_data
-        description: "Contains information about the matches played out in showdown. Each row represents a single turn in a match from the perspective of one player." 
+        description: "Contains information about the matches played out in showdown. Each row represents a single turn in a match from the perspective of one player."
         data_tests:
           - dbt_utils.unique_combination_of_columns:
+              arguments:
                 combination_of_columns:
                   - battle_id
                   - pov
                   - turn_number
- 
+
         columns:
           - name: battle_id
             data_type: varchar
@@ -48,9 +49,10 @@ sources:
             data_tests:
               - not_null
               - accepted_values:
-                  values:
-                    - 'WIN'
-                    - 'LOSS'
+                  arguments:
+                    values:
+                      - 'WIN'
+                      - 'LOSS'
           - name: total_turns
             data_type: number
             description: "Total amount of turns in the match."
@@ -156,6 +158,7 @@ sources:
         description: "Contains the data of the pokemons used in each match."
         data_tests:
           - dbt_utils.unique_combination_of_columns:
+              arguments:
                 combination_of_columns:
                   - battle_id
                   - trainer
@@ -197,4 +200,3 @@ sources:
           - name: sync_date
             data_type: timestamp_tz
             description: "The date this row was ingested."
-            
