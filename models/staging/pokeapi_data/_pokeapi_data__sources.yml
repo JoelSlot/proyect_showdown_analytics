@@ -92,21 +92,6 @@ sources:
           - name: slot
             data_type: number
 
-      - name: pokemon_characteristics
-        columns:
-          - name: id
-            data_type: number
-          - name: identifier
-            data_type: varchar
-          - name: species_id
-            data_type: number
-          - name: height
-            data_type: number
-          - name: weight
-            data_type: number
-          - name: base_experience
-            data_type: number
-
       - name: pokemon_forms
         columns:
           - name: identifier
