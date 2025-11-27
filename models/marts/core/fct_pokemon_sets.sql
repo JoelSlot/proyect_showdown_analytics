@@ -45,4 +45,4 @@ new_model as (
         {% endfor %}
 )
 
-select DISTINCT * from new_model
+select * from new_model
