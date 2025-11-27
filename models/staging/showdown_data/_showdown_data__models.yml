@@ -10,6 +10,9 @@ models:
               - battle_id
               - trainer
               - pokemon_name
+    config:
+      contract:
+        enforced: true
     columns:
       - name: battle_id
         data_type: varchar
@@ -61,6 +64,9 @@ models:
 
   - name: base_showdown_data__match_data
     description: "Raw turn-by-turn and match-level data captured from Pokémon Showdown battle logs."
+    config:
+      contract:
+        enforced: true
     columns:
       - name: battle_id
         data_type: varchar
