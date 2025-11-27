@@ -27,7 +27,7 @@ battles as (
 ),
 
 new_fact as (
-    select 
+    select DISTINCT
         F.POKEMON_DATA_ID,
         B.FORMAT_ID,
         CONCAT(F.BATTLE_ID, '-', F.TRAINER_ID) AS TEAM_ID,
@@ -40,6 +40,7 @@ new_fact as (
             WHEN B.IS_WINNER THEN 'WIN'
             ELSE 'LOSS'
         END AS BATTLE_RESULT,
+        B.ELO,
         F.sync_date
     from fct_sets F
         LEFT JOIN battles B ON F.BATTLE_ID = B.BATTLE_ID AND B.POV_TRAINER_ID = F.TRAINER_ID

@@ -3,7 +3,7 @@ version: 2
 
 models:
   - name: base_showdown_data__pokemon_data
-    description: ""
+    description: "Raw Pokémon-level data extracted from Pokémon Showdown battle logs."
     data_tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
@@ -13,323 +13,332 @@ models:
     columns:
       - name: battle_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the battle."
 
       - name: trainer
         data_type: varchar
-        description: ""
+        description: "Trainer name or identifier from the battle log."
 
       - name: pokemon_name
         data_type: varchar
-        description: ""
+        description: "Name of the Pokémon as reported in battle logs."
 
       - name: pokemon_base_species
         data_type: varchar
-        description: ""
+        description: "Base species of the Pokémon (e.g., Charizard for Charizard-Mega-X)."
 
       - name: item
         data_type: varchar
-        description: ""
+        description: "Held item used by the Pokémon."
 
       - name: ability
         data_type: varchar
-        description: ""
+        description: "Ability used by the Pokémon during the battle."
 
       - name: lvl
         data_type: number
-        description: ""
+        description: "Level of the Pokémon."
 
       - name: move_1
         data_type: varchar
-        description: ""
+        description: "First move in the Pokémon’s moveset."
 
       - name: move_2
         data_type: varchar
-        description: ""
+        description: "Second move in the Pokémon’s moveset."
 
       - name: move_3
         data_type: varchar
-        description: ""
+        description: "Third move in the Pokémon’s moveset."
 
       - name: move_4
         data_type: varchar
-        description: ""
+        description: "Fourth move in the Pokémon’s moveset."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing when data was synced into the warehouse."
 
   - name: base_showdown_data__match_data
-    description: ""
+    description: "Raw turn-by-turn and match-level data captured from Pokémon Showdown battle logs."
     columns:
       - name: battle_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the battle."
 
       - name: format
         data_type: varchar
-        description: ""
+        description: "Battle format (e.g., OU, NU)."
 
       - name: elo
         data_type: varchar
-        description: ""
+        description: "Reported ELO rating for the player."
 
       - name: pov
         data_type: varchar
-        description: ""
+        description: "Player point-of-view represented in this record."
 
       - name: opponent
         data_type: varchar
-        description: ""
+        description: "Name or identifier of the opponent."
 
       - name: battle_date
         data_type: varchar
-        description: ""
+        description: "Timestamp representing when the battle occurred."
 
       - name: result
         data_type: varchar
-        description: ""
+        description: "Outcome from the POV player’s perspective (win/loss)."
 
       - name: total_turns
         data_type: number
-        description: ""
+        description: "Total number of turns in the battle."
 
       - name: turn_number
         data_type: number
-        description: ""
+        description: "The specific turn associated with this event."
 
       - name: active_pokemon_name
         data_type: varchar
-        description: ""
+        description: "Name of the POV player's active Pokémon during the turn."
 
       - name: active_pokemon_base_species
         data_type: varchar
-        description: ""
+        description: "Base species of the active Pokémon."
 
       - name: active_pokemon_hp
         data_type: float
-        description: ""
+        description: "HP percentage or value of the active Pokémon."
 
       - name: active_pokemon_status
         data_type: varchar
-        description: ""
+        description: "Non-HP status (e.g., PAR, BRN, SLP) of the active Pokémon."
 
       - name: active_pokemon_effect
         data_type: varchar
-        description: ""
+        description: "Battle effect(s) currently impacting the active Pokémon."
 
       - name: move_1_pp
         data_type: number
-        description: ""
+        description: "PP remaining for move 1."
 
       - name: move_2_pp
         data_type: number
-        description: ""
+        description: "PP remaining for move 2."
 
       - name: move_3_pp
         data_type: number
-        description: ""
+        description: "PP remaining for move 3."
 
       - name: move_4_pp
         data_type: number
-        description: ""
+        description: "PP remaining for move 4."
 
       - name: opponent_pokemon_name
         data_type: varchar
-        description: ""
+        description: "Name of the opponent’s active Pokémon during the turn."
 
       - name: opponent_pokemon_base_species
         data_type: varchar
-        description: ""
+        description: "Base species of the opponent’s active Pokémon."
 
       - name: opponent_pokemon_hp
         data_type: float
-        description: ""
+        description: "HP percentage or value of the opponent’s active Pokémon."
 
       - name: opponent_pokemon_status
         data_type: varchar
-        description: ""
+        description: "Status condition affecting the opponent’s Pokémon."
 
       - name: opponent_pokemon_effect
         data_type: varchar
-        description: ""
+        description: "Battle effect(s) active on the opponent’s Pokémon."
 
       - name: pov_last_move
         data_type: varchar
-        description: ""
+        description: "Last move used by the POV player."
 
       - name: opponent_last_move
         data_type: varchar
-        description: ""
+        description: "Last move used by the opponent."
 
       - name: next_action
         data_type: varchar
-        description: ""
+        description: "Planned next action from the POV player (move/switch)."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
-
-
+        description: "Timestamp representing when data was synced into the warehouse."
 
   - name: stg_showdown_data__battles
-    description: ""
+    description: "Staged battle-level data including winner/loser, format, and metadata."
     columns:
       - name: battle_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the battle."
 
       - name: format_id
         data_type: varchar
-        description: ""
+        description: "Identifier for the battle format."
 
       - name: elo
         data_type: numeric
-        description: ""
+        description: "ELO rating for the POV or tracked player."
 
       - name: winner_id
         data_type: varchar
-        description: ""
+        description: "Identifier of the winning trainer."
 
       - name: loser_id
         data_type: varchar
-        description: ""
+        description: "Identifier of the losing trainer."
 
       - name: total_turns
         data_type: number
-        description: ""
+        description: "Total number of turns in the battle."
 
       - name: battle_date
         data_type: date
-        description: ""
+        description: "Date when the battle occurred."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing when data was synced."
 
   - name: stg_showdown_data__trainers
-    description: ""
+    description: "Staged dataset of trainer identities referenced in Showdown data."
     columns:
       - name: trainer_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier for the trainer."
 
       - name: trainer_name
         data_type: varchar
-        description: ""
+        description: "Display or canonical name of the trainer."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing when the record was synced."
 
   - name: stg_showdown_data__turns
-    description: ""
+    description: "Staged turn-by-turn dataset describing actions and Pokémon state per battle."
     columns:
       - name: battle_id
         data_type: varchar
-        description: ""
+        description: "Identifier of the battle."
 
       - name: pov_trainer_id
         data_type: varchar
-        description: ""
+        description: "Identifier of the trainer whose POV this record represents."
 
       - name: turn_number
         data_type: number
-        description: ""
+        description: "Turn index within the battle."
 
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier for the Pokémon active on this turn."
 
       - name: pokemon_hp
         data_type: float
-        description: ""
+        description: "HP percentage or value for the active Pokémon."
 
       - name: pokemon_status
         data_type: varchar
-        description: ""
+        description: "Status condition of the active Pokémon."
 
       - name: pokemon_effect
         data_type: varchar
-        description: ""
+        description: "Any effects currently applied to the active Pokémon."
 
       - name: last_move_id
         data_type: number
-        description: ""
+        description: "Identifier of the most recent move the Pokémon used."
 
       - name: next_action
         data_type: varchar
-        description: ""
+        description: "Player’s next action (move or switch)."
 
       - name: next_move_id
         data_type: number
-        description: ""
+        description: "Identifier of the next selected move (if applicable)."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing when this turn was synced."
 
   - name: stg_showdown_data__pokemon_data
-    description: ""
+    description: "Staged Pokémon-level data enriched with IDs mapped to canonical datasets."
     columns:
       - name: pokemon_data_id
         data_type: varchar
-        description: ""
+        description: "Surrogate identifier for the Pokémon record in staging."
+        data_tests:
+          - unique
 
       - name: battle_id
         data_type: varchar
-        description: ""
+        description: "Identifier of the battle this Pokémon appears in."
 
       - name: trainer_id
         data_type: varchar
-        description: ""
+        description: "Identifier for the trainer owning this Pokémon."
 
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Mapped canonical Pokémon ID from reference data."
 
       - name: item_id
         data_type: number
-        description: ""
+        description: "Mapped canonical item ID."
 
       - name: ability_id
         data_type: number
-        description: ""
+        description: "Mapped canonical ability ID."
 
       - name: lvl
         data_type: number
-        description: ""
+        description: "Level of the Pokémon."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing data sync time."
 
   - name: stg_showdown_data__pokemon_selected_moves
-    description: ""
+    description: "Staged mapping of Pokémon to the specific moves they used or selected in battle."
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - pokemon_data_id
+              - moveset_order
     columns:
       - name: pokemon_data_id
         data_type: varchar
-        description: ""
+        description: "Identifier linking back to the specific pokemon set."
 
       - name: move_id
         data_type: number
-        description: ""
+        description: "Identifier of the selected move."
+
+      - name: moveset_order
+        data_type: number
+        description: "Index of the selected move."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing when data was synced."
 
   - name: stg_showdown_data__formats
-    description: ""
+    description: "Staged lookup of Pokémon Showdown formats."
     columns:
       - name: format_id
         data_type: varchar
-        description: ""
+        description: "Unique identifier of the battle format."
 
       - name: format_name
         data_type: varchar
-        description: ""
+        description: "Human-readable name of the format."
 
       - name: sync_date
         data_type: timestamp_tz
-        description: ""
+        description: "Timestamp representing when the record was synced."

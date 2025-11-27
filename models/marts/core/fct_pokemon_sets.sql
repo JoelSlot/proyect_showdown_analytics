@@ -9,14 +9,24 @@ with
 
 pokemon_data as (
     select * from {{ref('stg_showdown_data__pokemon_data')}}
+    {% if is_incremental() %}
+
+    where sync_date > (select max(sync_date) from {{ this }})
+
+    {% endif %}
 ),
 
 pokemon_selected_moves as (
     select * from {{ref ('stg_showdown_data__pokemon_selected_moves')}}
+    {% if is_incremental() %}
+
+    where sync_date > (select max(sync_date) from {{ this }})
+
+    {% endif %}
 ),
 
 new_model as (
-    select
+    select DISTINCT
         P.pokemon_data_id,
         P.battle_id,
         P.trainer_id,
@@ -35,4 +45,4 @@ new_model as (
         {% endfor %}
 )
 
-select * from new_model
+select DISTINCT * from new_model

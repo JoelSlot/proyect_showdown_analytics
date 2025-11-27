@@ -1,347 +1,347 @@
 
 models:
   - name: base_pokeapi_data__item_prose
-    description: ""
+    description: "Raw item prose data providing descriptive text for items."
     columns:
       - name: item_id
         data_type: number
-        description: ""
+        description: "Unique identifier of the item."
 
       - name: item_effect
         data_type: varchar
-        description: ""
+        description: "Text describing the effect of the item."
 
   - name: stg_pokeapi_data__pokemon_stats
-    description: ""
+    description: "Staged dataset mapping Pokémon to their associated base stats."
     columns:
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier of the Pokémon."
 
       - name: stat_id
         data_type: number
-        description: ""
+        description: "Identifier of the statistic type."
 
       - name: base_stat
         data_type: number
-        description: ""
+        description: "The Pokémon’s numerical base stat value."
+        data_tests:
+          - is_positive_not_null_not_zero
 
   - name: stg_pokeapi_data__stats
-    description: ""
+    description: "Staged lookup table for Pokémon stat definitions."
     columns:
       - name: stat_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the stat."
 
       - name: damage_class_id
         data_type: number
-        description: ""
+        description: "Links the stat to its damage class, where applicable."
 
       - name: stat_name
         data_type: varchar
-        description: ""
+        description: "Human-readable name of the stat."
 
   - name: stg_pokeapi_data__pokemon_moves
-    description: ""
+    description: "Staged mapping of Pokémon to the moves they can learn."
     columns:
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier of the Pokémon."
 
       - name: move_id
         data_type: number
-        description: ""
+        description: "Identifier of the move."
 
   - name: base_pokeapi_data__moves
-    description: ""
+    description: "Raw move data from the source API."
     columns:
       - name: move_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the move."
         data_tests:
           - unique
 
       - name: move_identifier
         data_type: varchar
-        description: ""
+        description: "Canonical API identifier for the move."
         data_tests:
           - unique
 
       - name: type_id
         data_type: number
-        description: ""
+        description: "Identifier of the elemental type of the move."
 
       - name: power
         data_type: number
-        description: ""
+        description: "Base power of the move."
 
       - name: pp
         data_type: number
-        description: ""
+        description: "Number of PP (uses) the move has."
 
       - name: accuracy
         data_type: number
-        description: ""
+        description: "Accuracy percentage of the move."
 
       - name: priority
         data_type: number
-        description: ""
+        description: "Priority level determining move order."
 
       - name: damage_class_id
         data_type: number
-        description: ""
-
+        description: "Identifier for the move’s damage class."
 
   - name: stg_pokeapi_data__moves
-    description: ""
+    description: "Staged, enriched view of Pokémon moves including names and properties."
     columns:
       - name: move_id
         data_type: number
-        description: ""
+        description: "Identifier for the move."
 
       - name: move_identifier
         data_type: varchar
-        description: ""
+        description: "Canonical API identifier for the move."
 
       - name: move_name
         data_type: varchar
-        description: ""
+        description: "Display name of the move."
 
       - name: type_id
         data_type: number
-        description: ""
+        description: "Identifier for the move’s elemental type."
 
       - name: power
         data_type: number
-        description: ""
+        description: "Base power of the move."
 
       - name: pp
         data_type: number
-        description: ""
+        description: "PP (uses) available for the move."
 
       - name: accuracy
         data_type: number
-        description: ""
+        description: "Accuracy value of the move."
 
       - name: priority
         data_type: number
-        description: ""
+        description: "Move priority determining turn order."
 
       - name: damage_class_id
         data_type: number
-        description: ""
+        description: "Identifier for the move’s damage class."
 
   - name: stg_pokeapi_data__pokemon_type_efficacy
-    description: ""
+    description: "Staged table defining how effective one Pokémon type is against another."
     columns:
       - name: damage_type_id
         data_type: number
-        description: ""
+        description: "Type ID of the attacking move."
 
       - name: target_type_id
         data_type: number
-        description: ""
+        description: "Type ID of the defending Pokémon."
 
       - name: damage_factor
         data_type: number
-        description: ""
+        description: "Effectiveness multiplier between the two types."
 
   - name: stg_pokeapi_data__move_damage_classes
-    description: ""
+    description: "Staged lookup of move damage class definitions."
     columns:
       - name: damage_class_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the damage class."
 
       - name: damage_class_name
         data_type: varchar
-        description: ""
+        description: "Human-readable name of the damage class."
 
   - name: base_pokeapi_data__abilities
-    description: ""
+    description: "Raw ability data from the source API."
     columns:
       - name: ability_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the ability."
         data_tests:
           - unique
 
       - name: ability_identifier
         data_type: varchar
-        description: ""
+        description: "Canonical API identifier for the ability."
 
   - name: base_pokeapi_data__ability_effects
-    description: ""
+    description: "Raw text describing each Pokémon ability's effect."
     columns:
       - name: ability_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the ability."
         data_tests:
           - unique
 
       - name: ability_effect
         data_type: varchar
-        description: ""
+        description: "Text description of the ability's effect."
 
   - name: stg_pokeapi_data__abilities
-    description: ""
+    description: "Staged view combining ability identifiers, names, and effects."
     columns:
       - name: ability_id
         data_type: number
-        description: ""
+        description: "Identifier for the ability."
 
       - name: ability_identifier
         data_type: varchar
-        description: ""
+        description: "Canonical API identifier."
 
       - name: ability_name
         data_type: varchar
-        description: ""
+        description: "Human-readable ability name."
 
       - name: ability_effect
         data_type: varchar
-        description: ""
+        description: "Description of the ability effect."
 
   - name: base_pokeapi_data__pokemon_forms
-    description: ""
+    description: "Raw Pokémon forms data from the API."
     columns:
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier for the Pokémon."
 
       - name: form_name
         data_type: varchar
-        description: ""
+        description: "Display name of the form."
 
       - name: form_identifier
         data_type: varchar
-        description: ""
+        description: "Canonical API identifier of the form."
 
       - name: is_default
         data_type: boolean
-        description: ""
+        description: "Indicates whether this is the Pokémon’s default form."
 
       - name: form_order
         data_type: number
-        description: ""
+        description: "Ordering of the form relative to others."
 
   - name: sql_pokeapi_data__pokemon_forms
-    description: ""
+    description: "Cleaned SQL-transformed Pokémon forms data."
     columns:
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier for the Pokémon."
 
       - name: form_name
         data_type: varchar
-        description: ""
+        description: "Name of the Pokémon form."
 
       - name: is_default
         data_type: boolean
-        description: ""
+        description: "Whether this form is the default."
 
       - name: form_order
         data_type: number
-        description: ""
+        description: "Sort order for the form."
 
   - name: base_pokeapi_data__move_names
-    description: ""
+    description: "Raw move names extracted from the API."
     columns:
       - name: move_id
         data_type: number
-        description: ""
+        description: "Identifier for the move."
 
       - name: move_name
         data_type: varchar
-        description: ""
+        description: "Human-readable name of the move."
 
   - name: stg_pokeapi_data__types
-    description: ""
+    description: "Staged lookup of Pokémon elemental types."
     columns:
       - name: type_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the type."
 
       - name: type_name
         data_type: varchar
-        description: ""
+        description: "Human-readable name of the type."
 
   - name: stg_pokeapi_data__pokemon_abilities
-    description: ""
+    description: "Mapping of Pokémon to their abilities, including hidden abilities."
     columns:
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier of the Pokémon."
 
       - name: ability_id
         data_type: number
-        description: ""
+        description: "Identifier of the ability."
 
       - name: is_hidden
         data_type: boolean
-        description: ""
+        description: "Indicates whether the ability is a hidden ability."
 
       - name: ability_slot
         data_type: number
-        description: ""
+        description: "Slot number indicating primary or secondary ability."
 
   - name: stg_pokeapi_data__pokemon_types
-    description: ""
+    description: "Mapping of Pokémon to their associated types."
     columns:
       - name: pokemon_id
         data_type: number
-        description: ""
+        description: "Identifier of the Pokémon."
 
       - name: type_id
         data_type: number
-        description: ""
+        description: "Identifier of the elemental type."
 
       - name: slot
         data_type: number
-        description: ""
+        description: "Ordering of the type (primary, secondary)."
 
   - name: base_pokeapi_data__items
-    description: ""
+    description: "Raw item data from the API."
     columns:
       - name: item_id
         data_type: number
-        description: ""
+        description: "Unique identifier for the item."
         data_tests:
           - unique
 
       - name: item_name
         data_type: varchar
-        description: ""
+        description: "Human-readable item name."
 
   - name: base_pokeapi_data__item_names
-    description: ""
-    columns:
-
-    - name: item_id
-      data_type: number
-      description: ""
-
-    - name: name
-      data_type: number
-      description: ""
-
-  - name: stg_pokeapi_data__items
-    description: ""
+    description: "Raw item name reference table."
     columns:
       - name: item_id
         data_type: number
-        description: ""
+        description: "Identifier of the item."
+
+      - name: name
+        data_type: number
+        description: "Localized or variant name of the item."
+
+  - name: stg_pokeapi_data__items
+    description: "Staged, enriched item dataset combining identifiers, names, and effects."
+    columns:
+      - name: item_id
+        data_type: number
+        description: "Identifier for the item."
         data_tests:
           - unique
 
       - name: item_identifier
         data_type: varchar
-        description: ""
+        description: "Canonical identifier for the item."
 
       - name: item_name
         data_type: varchar
-        description: ""
+        description: "Human-readable name of the item."
 
       - name: item_effect
         data_type: varchar
-        description: ""
+        description: "Description of the item's effect."

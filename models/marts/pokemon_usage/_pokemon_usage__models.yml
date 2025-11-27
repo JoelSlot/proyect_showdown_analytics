@@ -6,6 +6,8 @@ models:
       - name: pokemon_data_id
         data_type: varchar
         description: ""
+        data_tests:
+          - unique
 
       - name: format_id
         data_type: varchar

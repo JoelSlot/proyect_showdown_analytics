@@ -35,41 +35,6 @@ models:
         data_type: timestamp_tz
         description: ""
 
-  - name: dim_pokemon_sets
-    description: ""
-    columns:
-      - name: pokemon_data_id
-        data_type: varchar
-        description: ""
-
-      - name: battle_id
-        data_type: varchar
-        description: ""
-
-      - name: trainer_id
-        data_type: varchar
-        description: ""
-
-      - name: pokemon_id
-        data_type: number
-        description: ""
-
-      - name: item_id
-        data_type: number
-        description: ""
-
-      - name: ability_id
-        data_type: number
-        description: ""
-
-      - name: lvl
-        data_type: number
-        description: ""
-
-      - name: sync_date
-        data_type: timestamp_tz
-        description: ""
-
   - name: dim_format
     description: ""
     columns:
@@ -176,6 +141,8 @@ models:
       - name: base_stat
         data_type: number
         description: ""
+        data_tests:
+          - is_positive_not_null_not_zero
 
   - name: dim_pokemon_learnable_moves
     description: ""
@@ -299,6 +266,8 @@ models:
       - name: pokemon_data_id
         data_type: varchar
         description: ""
+        data_tests:
+          - unique
 
       - name: battle_id
         data_type: varchar

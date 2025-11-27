@@ -16,7 +16,6 @@ source as (
     where sync_date > (select max(sync_date) from {{ this }})
 
     {% endif %}
-
 ),
 
 renamed as (
